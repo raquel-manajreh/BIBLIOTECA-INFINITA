@@ -1,0 +1,31 @@
+/* CSS para modificar el COMPONENTE BooksSeach */
+
+.searchingComponent{
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+
+.searchInput{
+    padding: 5px;
+    background-color: rgba(245, 245, 245, 0.796);
+    width: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.74);
+    border-radius: 10px;
+    /* border-style: none; */
+}
+.searchInput:hover{
+    background-color: rgba(235, 235, 235, 0.796);
+    border: 1px solid rgba(0, 0, 0, 0.74);
+}
+
+.searchButton{
+    padding: 6px;
+    background-color: rgba(245, 245, 245, 0.796);
+    margin-left: 12px;
+    width: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.74);
+    border-radius: 8px;
+    /* border-style: none; */
+}

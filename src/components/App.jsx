@@ -1,15 +1,15 @@
-import { useState } from "react";
-import BooksList from "./BooksList/BooksList";
 import NavBar from "./NavBar/NavBar";
+import BooksSearch from "./BooksSearch/BooksSearch";
+import '../scss/App.css';
 
 function App() {
 
   return (
     <div>
       <NavBar/> 
-      {/* QUIERO QUE EL COMPONENTE BOOBKSLIST APAREZCA EN EL NAVBAR */}
-      <h1>BIBLIOTECA INFINITA</h1>
-      <BooksList />
+      <h1 className="h1">BIBLIOTECA INFINITA</h1>
+      <h2 className="h2">" Explora libros, expande mentes "</h2>
+      <BooksSearch />
     </div>
   );
 }

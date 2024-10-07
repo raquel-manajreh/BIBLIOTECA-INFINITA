@@ -1,10 +1,14 @@
+import './NavBar.css';
+
+
 function NavBar () {
-    return <header>
-        <nav>
-            <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
+    return <header >
+        <nav className='navBar'>
+            <ul className='ulList'>
+                <li className='logo'>
+                <i className="fa-regular fa-bookmark"></i>
+                BIBLIOTECA INFINITA</li>
+                <li className='home'>HOME</li>
             </ul>
         </nav>
     </header>

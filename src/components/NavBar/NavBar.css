@@ -1,1 +1,39 @@
-/* CSS DEL  */
+/* CSS DEL  NAVBAR*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navBar{
+    /* background-color: rgba(235, 234, 234, 0.825); */
+    border-radius: 8px;
+    height: 60px;
+}
+
+.ulList{
+    list-style: none;
+    display: flex;
+    /* border: 1px solid black; */
+}
+
+.logo{
+    padding: 12px;
+    margin: 20px 400px 0px 100px;
+    border-radius: 15px;
+    background-color: rgba(210, 200, 177, 0.677);
+    font-family: "Cormorant Garamond", system-ui;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.home{
+    margin: 20px 0px 0px 300px;
+    padding: 12px;
+    font-weight: bold;
+    /* border: 1px solid black; */
+}
+
+
+.fa-bookmark{
+    margin-right: 6px;
+}
