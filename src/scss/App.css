@@ -7,7 +7,7 @@ html, body{
 body{
     /* background-color: brown; */
     /* DE LA IMAGEN AUN NO ESTOY SEGURA */
-  background-image: url('/Images/fondo2.png');
+  background-image: url('/src/assets/fondo2.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -43,12 +43,6 @@ const BooksSearch = () => {
                 {/* PARA VER TITULO */}
                 <h4>{book.volumeInfo.title}</h4>
                 
-                {/* AUTORES */}
-                <p>{book.volumeInfo.authors?.join(', ')}</p>
-
-                {/* CATEGORIA */}
-                <p>{book.volumeInfo.categories?.join(', ')}</p>
-                
                 {/* IMAGEN (si está disponible) */}
                 {book.volumeInfo.imageLinks?.thumbnail && (
                   <img
@@ -56,6 +50,13 @@ const BooksSearch = () => {
                     alt={`Portada de ${book.volumeInfo.title}`}
                   />
                 )}
+
+                {/* AUTORES */}
+                <p>{book.volumeInfo.authors?.join(', ')}</p>
+
+                {/* CATEGORIA */}
+                <p>{book.volumeInfo.categories?.join(', ')}</p>
+                
               </li>
             ))}
           </ul>
