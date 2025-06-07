@@ -1,0 +1,20 @@
+
+/* TÍTULO - H1 - BIBLIOTECA INFINITA */
+.h1{
+  font-size: 60px;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  letter-spacing: 5px;
+  text-align: center;
+  margin-top: 50px;  /* border: 1px solid black; */
+}
+
+.h2{
+  font-size: 26px;
+  font-family: "Cormorant Garamond", system-ui;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 20px;
+  /* border: 1px solid black */
+}

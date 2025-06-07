@@ -1,15 +1,29 @@
 import NavBar from "./NavBar/NavBar";
-import BooksSearch from "./BooksSearch/BooksSearch";
-import '../scss/App.css';
+import Home from "../Pages/Home/Home";
+import { Route, Routes } from "react-router-dom";
+import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
+import Biblioteca from "../Pages/Biblioteca/Biblioteca";
+import AuthRoute from "./AuthRoutes/AuthRoute";
+
+
+import '../css/App.css';
+
+
+
 
 function App() {
 
   return (
     <div>
-      <NavBar/> 
-      <h1 className="h1">BIBLIOTECA INFINITA</h1>
-      <h2 className="h2">" Explora libros, expande mentes "</h2>
-      <BooksSearch />
+      <NavBar /> 
+
+      <Routes >
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/biblioteca" element={<AuthRoute><Biblioteca /></AuthRoute>} />
+      </Routes>
     </div>
   );
 }
