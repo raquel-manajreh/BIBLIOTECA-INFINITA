@@ -1,25 +1,23 @@
-// src/firebase.js
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
+// import { getAnalytics } from "firebase/analytics"; // Solo si lo necesitas
 
-// (Solo necesitas analytics si vas a usarlo, puedes quitarlo si no)
-import { getAnalytics } from "firebase/analytics";
-
-// Tu configuración personalizada
 const firebaseConfig = {
-  apiKey: "AIzaSyAGXWpo6I8JJJE9RJjH-jKZYSJbQjDwvEU",
-  authDomain: "biblioteca-infinita-d2df9.firebaseapp.com",
-  projectId: "biblioteca-infinita-d2df9",
-  storageBucket: "biblioteca-infinita-d2df9.appspot.com", // ojo: aquí había un error en el dominio
-  messagingSenderId: "225825456591",
-  appId: "1:225825456591:web:653af47d2208018eda92ba",
-  measurementId: "G-L4BD59PMCX"
+  apiKey: "AIzaSyCVEWr4G048VCfn4EcAP9Hi_sf_B6zcT6E",
+  authDomain: "biblioteca-infinita-356ba.firebaseapp.com",
+  projectId: "biblioteca-infinita-356ba",
+  storageBucket: "biblioteca-infinita-356ba.firebasestorage.app",
+  messagingSenderId: "45766090394",
+  appId: "1:45766090394:web:9f45bb251ef48673fa0923",
+  measurementId: "G-4DL9WH7L74"
 };
 
-// Inicializar Firebase
-const app = initializeApp(firebaseConfig);
+// ✅ Inicializar Firebase solo si no está ya inicializado
+const app = getApps().length === 0 
+  ? initializeApp(firebaseConfig) 
+  : getApps()[0];
 
-// Exporta los servicios que vayas a usar
+// Exportar solo los servicios que usas
 const auth = getAuth(app);
 // const analytics = getAnalytics(app); // Solo si vas a usarlo
 

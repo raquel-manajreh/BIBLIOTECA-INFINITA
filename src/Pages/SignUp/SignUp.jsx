@@ -14,13 +14,21 @@ function SignUp() {
 
     const handleRegister = async (e) => {
     e.preventDefault();
-    try {
-      await createUserWithEmailAndPassword (auth, email, password);
-      alert('¡Has sido registrado!');
-    } catch (error) {
-      console.error(error.message);
-      alert('Error de registro');
-    }
+    // try {
+    //   await createUserWithEmailAndPassword (auth, email, password);
+    //   alert('¡Has sido registrado!');
+    // } catch (error) {
+    //   console.error(error.message);
+    //   alert('Error de registro');
+    // }
+      try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log("Usuario registrado:", userCredential.user);
+    alert("¡Registrado con éxito! UID: " + userCredential.user.uid);
+  } catch (error) {
+    console.error("Error de registro:", error.code, error.message);
+    alert("Error de registro: " + error.message);
+  }
   };
 
 
