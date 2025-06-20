@@ -1,0 +1,19 @@
+.biblioteca-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.book-card {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.book-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}

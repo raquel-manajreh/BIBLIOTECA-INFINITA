@@ -1,30 +1,42 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import { saveBooksInLibrary } from '../AuthRoutes/firebaseBooks';
+import { getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+
 import "../BooksSearch/BooksSearch.css";
 
+
 const BooksSearch = () => {
-  const [query, setQuery] = useState(''); // Estado del input
-  const [books, setBooks] = useState([]); // Estado para almacenar los libros
+  const [query, setQuery] = useState('');
+  const [books, setBooks] = useState([]);
 
   const apiKey = 'AIzaSyCcAlkwd8aEXHrMgRlRcYT-oowmGShlYhg';
   const apiUrl = `https://www.googleapis.com/books/v1/volumes`;
 
+  const navigate = useNavigate();
+
   const searchBooks = async () => {
     if (query.trim() !== '') {
       try {
-        // Llamada a la API de Google Books
         const response = await axios.get(`${apiUrl}?q=${query}&key=${apiKey}`);
-        
-        // Guardar libros en el estado
         setBooks(response.data.items || []);
-
-        // console.log(response.data);
-        // ESTE ES EL CONSOLE PARA VER EL RESPONSE QUE RECOGE EN CONSOLA LOS DATOS DE LA GOOGLE API DE CADA LIBRO
-        
       } catch (error) {
         console.error('Error al buscar libros:', error);
       }
     }
+  };
+
+  const handleSave = async (book, estado) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    await saveBooksInLibrary(user.uid, book, estado);
   };
 
   return (
@@ -38,6 +50,7 @@ const BooksSearch = () => {
         {books.length > 0 && (
           <ul>
             {books.map((book, index) => (
+
               <li key={index}>
 
                 
@@ -58,6 +71,13 @@ const BooksSearch = () => {
                 {/* <p>{book.id}</p>  */}
                  {/* ID */}
 
+
+                <div className='button-group'>
+                  <button onClick={() => handleSave(book, "favoritos")}>Favoritos</button>
+                  <button onClick={() => handleSave(book, "leidos")}>Leídos</button>
+                  <button onClick={() => handleSave(book, "enCurso")}>En curso</button>
+                  <button onClick={() => handleSave(book, "proximaHistoria")}>Próxima Historia</button>
+                </div>
                 
               </li>
             ))}
