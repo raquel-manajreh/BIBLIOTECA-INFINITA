@@ -1,5 +1,6 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 // import { getAnalytics } from "firebase/analytics"; // Solo si lo necesitas
 
 const firebaseConfig = {
@@ -17,8 +18,9 @@ const app = getApps().length === 0
   ? initializeApp(firebaseConfig) 
   : getApps()[0];
 
-// Exportar solo los servicios que usas
+// Exportar solo los servicios que use:
 const auth = getAuth(app);
-// const analytics = getAnalytics(app); // Solo si vas a usarlo
+const db = getFirestore(app);
+// const analytics = getAnalytics(app); // Solo si voy a usarlo
 
-export { auth };
+export { auth, db };

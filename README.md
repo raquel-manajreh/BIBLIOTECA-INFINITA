@@ -44,3 +44,4 @@ git clone https://github.com/tu-usuario/tu-proyecto.git
 cd tu-proyecto
 npm install
 npm start
+

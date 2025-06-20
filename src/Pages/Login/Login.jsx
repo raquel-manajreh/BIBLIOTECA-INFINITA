@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../components/AuthRoutes/firebaseConfig";
+import { auth, db } from "../../components/AuthRoutes/firebaseConfig"; //Auth -> para trabajar con los usuarios  |  db -> Para trabajar con la database de firestore
+import { crearUsuarioSiNoExiste } from "../../components/AuthRoutes/firebaseUsers";
+import {doc, getDoc} from "firebase/firestore"; // doc ->crea la referencia a un documento en firestore |  getDoc -> recupera los datos de ese documento desde la bbdd
 
 import "../Login/Login.css";
 
@@ -8,18 +10,33 @@ import "../Login/Login.css";
 function Login() {
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(""); //Para guardar los valores que escribe el usuario en el formulario
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); //Para que la pagina se renderice una vez y no se renderice otra vez cuando se envien los datos del formulario
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+     
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       alert('¡Login exitoso!');
+
+      const uid = userCredential.user.uid;
+
+      await crearUsuarioSiNoExiste(uid);
+
+      const userDocRef = doc(db, "users", uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        const booksData = userDoc.data().books;
+        console.log("Libros del usuario:", booksData);
+      } else {
+        console.log("No se encontró el documento del usuario");
+      }
     } catch (error) {
       console.error(error.message);
       alert('Error al iniciar sesión');
-    };
-  }
+    }
+  };
 
 
   return (
@@ -39,3 +56,20 @@ function Login() {
 }
 
 export default Login;
+
+
+
+
+  // const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  //     alert('¡Login exitoso!');
+
+  //     const uid = userCredential.user.uid;
+  //     const userDocRef = doc(db, "users", uid);
+  //     const userDoc = await getDoc(userDocRef);
+
+  //     if (userDoc.exists()) {
+  //       const booksData = userDoc.data().books;
+  //       console.log("📚 Libros del usuario:", booksData);
+  //     } else {
+  //       console.log("No se encontró el documento del usuario");
+  //     }

@@ -1,32 +1,29 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../components/AuthRoutes/firebaseConfig";
-
+import { crearUsuarioSiNoExiste } from "../../components/AuthRoutes/firebaseUsers";
 
 import "../SignUp/SignUp.css";
-
 
 
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
-    const handleRegister = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // try {
-    //   await createUserWithEmailAndPassword (auth, email, password);
-    //   alert('¡Has sido registrado!');
-    // } catch (error) {
-    //   console.error(error.message);
-    //   alert('Error de registro');
-    // }
-      try {
+    try {
+      //1. Registramos al usuario con el email y contraseña
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log("Usuario registrado:", userCredential.user);
+    const user = userCredential.user;
+
+    //2. Creamps su documento en firestore si no existe
+    await crearUsuarioSiNoExiste(user.uid);
+    // console.log("Usuario registrado:", userCredential.user);
+    
     alert("¡Registrado con éxito! UID: " + userCredential.user.uid);
   } catch (error) {
-    console.error("Error de registro:", error.code, error.message);
+    // console.error("Error de registro:", error.code, error.message);
     alert("Error de registro: " + error.message);
   }
   };
