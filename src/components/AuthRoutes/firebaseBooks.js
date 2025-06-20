@@ -1,5 +1,5 @@
 import { db } from "./firebaseConfig";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 
 
@@ -43,11 +43,22 @@ export const getBooksFromLibrary = async (uid) => {
 //para ACTUALIZAR el estado del libro
 export const updateBookState = async (uid, bookId, newEstado) => {
   try {
-    const bookRef = book(db, "users", uid, "books", bookId);
+    const bookRef = doc(db, "users", uid, "books", bookId);
     await updateDoc(bookRef, { estado: newEstado });
     console.log("Estado del libro actualizado en Firestore");
   } catch (error) {
     console.error("Error al actualizar el estado del libro", error);
+  }
+};
+
+//Funcion para ELIMINAR el libro de la biblioteca
+export const deleteBookFromLibrary = async (uid, bookId) => {
+  try {
+    const bookRef = doc(db, "users", uid, "books", bookId);
+    await deleteDoc(bookRef);
+    console.log("Libro eliminado de Firestore");
+  } catch (error) {
+    console.error("Error al eliminar el libro", error);
   }
 };
 

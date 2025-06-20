@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
-import { getBooksFromLibrary, updateBookState } from '../../components/AuthRoutes/firebaseBooks';
+import { getBooksFromLibrary, updateBookState, deleteBookFromLibrary } from '../../components/AuthRoutes/firebaseBooks';
 
 import './Biblioteca.css';  
 
@@ -44,7 +44,6 @@ const Biblioteca = () => {
     try {
       await updateBookState(user.uid, bookId, newEstado);
 
-      // Actualizamos estado local para reflejar el cambio en UI sin recargar
       setBooks(prevBooks =>
         prevBooks.map(book =>
           book.id === bookId ? { ...book, estado: newEstado } : book
@@ -53,6 +52,25 @@ const Biblioteca = () => {
     } catch (error) {
       console.error("Error al actualizar el estado del libro", error);
       setError("No se pudo actualizar el estado del libro");
+    }
+  };
+
+  const handleDeleteBook = async (bookId) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (!user) {
+      setError("No estás logueado");
+      return;
+    }
+
+    try {
+      await deleteBookFromLibrary(user.uid, bookId);
+
+      // Actualizar estado local para eliminar el libro de la lista sin recargar
+      setBooks(prevBooks => prevBooks.filter(book => book.id !== bookId));
+    } catch (error) {
+      console.error("Error al eliminar el libro", error);
+      setError("No se pudo eliminar el libro");
     }
   };
 
@@ -74,6 +92,9 @@ const Biblioteca = () => {
             <button onClick={() => handleChangeEstado(book.id, "leidos")}>Leídos</button>
             <button onClick={() => handleChangeEstado(book.id, "enCurso")}>En curso</button>
             <button onClick={() => handleChangeEstado(book.id, "proximaHistoria")}>Próxima Historia</button>
+            <button onClick={() => handleDeleteBook(book.id)} style={{color: 'red'}}>
+              Eliminar
+            </button>
           </div>
         </div>
       ))}
