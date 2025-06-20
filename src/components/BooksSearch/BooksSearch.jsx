@@ -17,6 +17,9 @@ const BooksSearch = () => {
         
         // Guardar libros en el estado
         setBooks(response.data.items || []);
+
+        // console.log(response.data);
+        // ESTE ES EL CONSOLE PARA VER EL RESPONSE QUE RECOGE EN CONSOLA LOS DATOS DE LA GOOGLE API DE CADA LIBRO
         
       } catch (error) {
         console.error('Error al buscar libros:', error);
@@ -26,11 +29,7 @@ const BooksSearch = () => {
 
   return (
     <div className='searchingComponent'>
-      <input className='searchInput'
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Buscar..."
+      <input className='searchInput' type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar..."
       />
       <button className='searchButton' onClick={searchBooks}>
       <i className="fa-solid fa-magnifying-glass"></i></button>
@@ -40,27 +39,32 @@ const BooksSearch = () => {
           <ul>
             {books.map((book, index) => (
               <li key={index}>
-                {/* PARA VER TITULO */}
-                <h4>{book.volumeInfo.title}</h4>
+
+                
+                <h4>{book.volumeInfo.title}</h4>  {/* PARA VER TITULO */}
                 
                 {/* IMAGEN (si está disponible) */}
-                {book.volumeInfo.imageLinks?.thumbnail && (
+                {book.volumeInfo.imageLinks?.thumbnail && (   
                   <img
                     src={book.volumeInfo.imageLinks.thumbnail}
                     alt={`Portada de ${book.volumeInfo.title}`}
                   />
                 )}
+                
+                <p>{book.volumeInfo.authors?.join(', ')}</p>  {/* AUTORES */}
 
-                {/* AUTORES */}
-                <p>{book.volumeInfo.authors?.join(', ')}</p>
+                <p>{book.volumeInfo.categories?.join(', ')}</p>  {/* CATEGORIA */}
 
-                {/* CATEGORIA */}
-                <p>{book.volumeInfo.categories?.join(', ')}</p>
+                {/* <p>{book.id}</p>  */}
+                 {/* ID */}
+
                 
               </li>
             ))}
           </ul>
+
         )}
+
       </div>
     </div>
   );
