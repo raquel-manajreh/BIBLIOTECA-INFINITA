@@ -37,7 +37,7 @@ const Biblioteca = () => {
     fetchBooks();
   }, []);
 
-  const estados = ['favoritos', 'enCurso', 'leidos', 'proximaHistoria'];
+  const estados = ['Favoritos', 'Leídos', 'En curso', 'Próxima Historia'];
 
   const groupedBooks = estados.reduce((acc, estado) => {
     acc[estado] = books.filter(book => book.estado === estado);
@@ -84,7 +84,6 @@ const Biblioteca = () => {
 
   if (loading) return <p>Cargando libros...</p>;
   if (error) return <p>{error}</p>;
-  if (books.length === 0) return <p>No tienes libros guardados.</p>;
 
   return (
     <div className="kanban-container">
