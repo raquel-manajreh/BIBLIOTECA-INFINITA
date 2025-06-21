@@ -1,19 +1,49 @@
-.biblioteca-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+.kanban-container {
+  display: flex;
   gap: 1rem;
   padding: 1rem;
+  overflow-x: auto;
+  align-items: flex-start;
+}
+
+.kanban-column {
+  justify-items: center;
+  flex: 1;
+  min-width: 250px;
+  background-color: #f8f9fa61;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.column-title {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .book-card {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  border-radius: 5px;
-  text-align: center;
+  width: 20%;
+  background: white;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
 }
 
 .book-card img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   margin-bottom: 0.5rem;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.button-group button {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
 }

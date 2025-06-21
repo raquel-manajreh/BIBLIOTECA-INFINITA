@@ -27,6 +27,12 @@ const BooksSearch = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      searchBooks();
+    }
+  };
+
   const handleSave = async (book, estado) => {
     const auth = getAuth();
     const user = auth.currentUser;
@@ -37,12 +43,15 @@ const BooksSearch = () => {
     }
 
     await saveBooksInLibrary(user.uid, book, estado);
+    alert("¡Libro guardado!");
   };
 
+
   return (
+
     <div className='searchingComponent'>
-      <input className='searchInput' type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar..."
-      />
+
+      <input className='searchInput' type="text" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} placeholder="Buscar..." />
       <button className='searchButton' onClick={searchBooks}>
       <i className="fa-solid fa-magnifying-glass"></i></button>
 

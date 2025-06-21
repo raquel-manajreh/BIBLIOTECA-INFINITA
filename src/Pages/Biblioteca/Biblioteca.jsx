@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
-import { getBooksFromLibrary, updateBookState, deleteBookFromLibrary } from '../../components/AuthRoutes/firebaseBooks';
+import {
+  getBooksFromLibrary,
+  updateBookState,
+  deleteBookFromLibrary
+} from '../../components/AuthRoutes/firebaseBooks';
 
-import './Biblioteca.css';  
+import './Biblioteca.css';
 
 const Biblioteca = () => {
   const [books, setBooks] = useState([]);
@@ -33,6 +37,13 @@ const Biblioteca = () => {
     fetchBooks();
   }, []);
 
+  const estados = ['favoritos', 'enCurso', 'leidos', 'proximaHistoria'];
+
+  const groupedBooks = estados.reduce((acc, estado) => {
+    acc[estado] = books.filter(book => book.estado === estado);
+    return acc;
+  }, {});
+
   const handleChangeEstado = async (bookId, newEstado) => {
     const auth = getAuth();
     const user = auth.currentUser;
@@ -43,7 +54,6 @@ const Biblioteca = () => {
 
     try {
       await updateBookState(user.uid, bookId, newEstado);
-
       setBooks(prevBooks =>
         prevBooks.map(book =>
           book.id === bookId ? { ...book, estado: newEstado } : book
@@ -65,8 +75,6 @@ const Biblioteca = () => {
 
     try {
       await deleteBookFromLibrary(user.uid, bookId);
-
-      // Actualizar estado local para eliminar el libro de la lista sin recargar
       setBooks(prevBooks => prevBooks.filter(book => book.id !== bookId));
     } catch (error) {
       console.error("Error al eliminar el libro", error);
@@ -79,23 +87,29 @@ const Biblioteca = () => {
   if (books.length === 0) return <p>No tienes libros guardados.</p>;
 
   return (
-    <div className="biblioteca-grid">
-      {books.map(book => (
-        <div key={book.id} className="book-card">
-          <img src={book.image} alt={book.title} />
-          <h4>{book.title}</h4>
-          <p>{book.authors?.join(', ')}</p>
-          <p><strong>Estado:</strong> {book.estado}</p>
+    <div className="kanban-container">
+      {estados.map(estado => (
+        <div key={estado} className="kanban-column">
+          <h3 className="column-title">{estado.toUpperCase()}</h3>
+          {groupedBooks[estado].map(book => (
+            <div key={book.id} className="book-card">
+              <img src={book.image} alt={book.title} />
+              <h4>{book.title}</h4>
+              <p>{book.authors?.join(', ')}</p>
+              <p><strong>Estado:</strong> {book.estado}</p>
 
-          <div className="button-group">
-            <button onClick={() => handleChangeEstado(book.id, "favoritos")}>Favoritos</button>
-            <button onClick={() => handleChangeEstado(book.id, "leidos")}>Leídos</button>
-            <button onClick={() => handleChangeEstado(book.id, "enCurso")}>En curso</button>
-            <button onClick={() => handleChangeEstado(book.id, "proximaHistoria")}>Próxima Historia</button>
-            <button onClick={() => handleDeleteBook(book.id)} style={{color: 'red'}}>
-              Eliminar
-            </button>
-          </div>
+              <div className="button-group">
+                {estados.map(e => (
+                  <button key={e} onClick={() => handleChangeEstado(book.id, e)}>
+                    {e}
+                  </button>
+                ))}
+                <button onClick={() => handleDeleteBook(book.id)} style={{ color: 'red' }}>
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       ))}
     </div>

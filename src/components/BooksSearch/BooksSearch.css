@@ -21,10 +21,10 @@
 }
 
 .searchButton{
-    padding: 6px;
+    padding: 8px;
     background-color: rgba(245, 245, 245, 0.796);
     margin-left: 12px;
-    width: 30px;
+    width: 60px;
     border: 1px solid rgba(0, 0, 0, 0.74);
     border-radius: 8px;
     /* border-style: none; */
