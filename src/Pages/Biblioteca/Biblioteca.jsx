@@ -37,7 +37,16 @@ const Biblioteca = () => {
     fetchBooks();
   }, []);
 
-  const estados = ['Favoritos', 'Leídos', 'En curso', 'Próxima Historia'];
+  // Identificadores internos
+  const estados = ['favoritos', 'leidos', 'enCurso', 'proximaHistoria'];
+
+  // Etiquetas amigables
+  const etiquetas = {
+    favoritos: 'Favoritos',
+    leidos: 'Leídos',
+    enCurso: 'En curso',
+    proximaHistoria: 'Próxima Historia'
+  };
 
   const groupedBooks = estados.reduce((acc, estado) => {
     acc[estado] = books.filter(book => book.estado === estado);
@@ -89,18 +98,18 @@ const Biblioteca = () => {
     <div className="kanban-container">
       {estados.map(estado => (
         <div key={estado} className="kanban-column">
-          <h3 className="column-title">{estado.toUpperCase()}</h3>
+          <h3 className="column-title">{etiquetas[estado]}</h3>
           {groupedBooks[estado].map(book => (
             <div key={book.id} className="book-card">
               <img src={book.image} alt={book.title} />
               <h4>{book.title}</h4>
               <p>{book.authors?.join(', ')}</p>
-              <p><strong>Estado:</strong> {book.estado}</p>
+              <p><strong>Estado:</strong> {etiquetas[book.estado]}</p>
 
               <div className="button-group">
                 {estados.map(e => (
                   <button key={e} onClick={() => handleChangeEstado(book.id, e)}>
-                    {e}
+                    {etiquetas[e]}
                   </button>
                 ))}
                 <button onClick={() => handleDeleteBook(book.id)} style={{ color: 'red' }}>

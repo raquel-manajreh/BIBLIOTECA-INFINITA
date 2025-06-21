@@ -21,7 +21,7 @@ function Login() {
       // alert('¡Login exitoso!');
 
       const uid = userCredential.user.uid;
-      
+
       navigate("/biblioteca"); //Primero quiero que navegue a la biblioteca y luego cargue todo, para que se vea más rápido y directo el acceso
 
       await crearUsuarioSiNoExiste(uid);
@@ -62,20 +62,3 @@ function Login() {
 }
 
 export default Login;
-
-
-
-
-  // const userCredential = await signInWithEmailAndPassword(auth, email, password);
-  //     alert('¡Login exitoso!');
-
-  //     const uid = userCredential.user.uid;
-  //     const userDocRef = doc(db, "users", uid);
-  //     const userDoc = await getDoc(userDocRef);
-
-  //     if (userDoc.exists()) {
-  //       const booksData = userDoc.data().books;
-  //       console.log("📚 Libros del usuario:", booksData);
-  //     } else {
-  //       console.log("No se encontró el documento del usuario");
-  //     }
