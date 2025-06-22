@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../components/AuthRoutes/firebaseConfig";
 import { crearUsuarioSiNoExiste } from "../../components/AuthRoutes/firebaseUsers";
+import { useNavigate } from "react-router-dom";
 
 import "../SignUp/SignUp.css";
 
@@ -9,6 +10,7 @@ import "../SignUp/SignUp.css";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -16,6 +18,8 @@ function SignUp() {
       //1. Registramos al usuario con el email y contraseña
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
+
+    navigate("/biblioteca");
 
     //2. Creamps su documento en firestore si no existe
     await crearUsuarioSiNoExiste(user.uid);
