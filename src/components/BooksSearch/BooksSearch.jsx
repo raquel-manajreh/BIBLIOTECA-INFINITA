@@ -10,6 +10,8 @@ import "../BooksSearch/BooksSearch.css";
 const BooksSearch = () => {
   const [query, setQuery] = useState('');
   const [books, setBooks] = useState([]);
+  const [error, setError] = useState(null);
+
 
   const apiKey = 'AIzaSyCcAlkwd8aEXHrMgRlRcYT-oowmGShlYhg';
   const apiUrl = `https://www.googleapis.com/books/v1/volumes`;
@@ -20,12 +22,27 @@ const BooksSearch = () => {
     if (query.trim() !== '') {
       try {
         const response = await axios.get(`${apiUrl}?q=${query}&key=${apiKey}`);
-        setBooks(response.data.items || []);
+
+        const items = response.data.items;
+
+        if (!items || items.length === 0) {
+          setBooks([]);
+          setError('No se encontraron libros para tu búsqueda.');
+        } else {
+          setBooks(items);
+          setError(null); // borra el mensaje de error anterior si todo va bien
+        }
+
       } catch (error) {
         console.error('Error al buscar libros:', error);
+        setBooks([]); // borra los resultados anteriores si hay error
+        setError('No se pudo obtener resultados. Verifica tu conexión.');
       }
+    } else {
+      setError('Escribe algo para buscar.');
+      setBooks([]);
     }
-  };
+};
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -54,6 +71,8 @@ const BooksSearch = () => {
       <input className='searchInput' type="text" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} placeholder="Buscar..." />
       <button className='searchButton' onClick={searchBooks}>
       <i className="fa-solid fa-magnifying-glass"></i></button>
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+
 
       <div>
         {books.length > 0 && (

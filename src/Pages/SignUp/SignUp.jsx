@@ -25,10 +25,27 @@ function SignUp() {
     await crearUsuarioSiNoExiste(user.uid);
     // console.log("Usuario registrado:", userCredential.user);
     
-    alert("¡Registrado con éxito! UID: " + userCredential.user.uid);
+    alert("¡Te has registrado con éxito!");
   } catch (error) {
-    // console.error("Error de registro:", error.code, error.message);
-    alert("Error de registro: " + error.message);
+
+
+    let message = "";
+
+      switch (error.code) {
+      case "auth/email-already-in-use":
+        message = "Este email ya está registrado.";
+        break;
+      case "auth/invalid-email":
+        message = "El correo no es válido.";
+        break;
+      case "auth/weak-password":
+        message = "La contraseña es demasiado débil - (mínimo 6 caracteres).";
+        break;
+      default:
+        message = "Ocurrió un error inesperado. Inténtalo de nuevo.";
+    }
+
+    alert(message);
   }
   };
 
