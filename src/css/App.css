@@ -4,16 +4,36 @@ html, body{
   height: 100dvh;
 }
 
-body{
-    /* background-color: brown; */
-    /* DE LA IMAGEN AUN NO ESTOY SEGURA */
-  background-image: url('/src/assets/fondo2.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100dvw;
-  height: 100dvh;
+/* TABLETS */
+@media (min-width: 768px){
+
+
+
 }
+
+
+
+/* ESCRITORIOS */
+@media (min-width: 1025px){
+
+  body{
+    background-image: url('/src/assets/fondo2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+
+}
+
+
+/* MONITORES */
+@media (min-width: 1440px){
+
+
+
+}
+
 
 
 /* @import "tailwindcss"; */
