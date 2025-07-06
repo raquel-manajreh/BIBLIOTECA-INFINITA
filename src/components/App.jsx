@@ -10,8 +10,6 @@ import AuthRoute from "./AuthRoutes/AuthRoute";
 import '../css/App.css';
 
 
-
-
 function App() {
 
   return (

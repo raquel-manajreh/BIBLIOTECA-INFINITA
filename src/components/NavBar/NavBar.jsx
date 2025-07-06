@@ -3,10 +3,12 @@ import { useAuth } from "../../Context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../AuthRoutes/firebaseConfig";
 import "./NavBar.css";
+import { useState } from "react";
 
 function NavBar () {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -17,21 +19,34 @@ function NavBar () {
     }
   };
 
+  const oppenMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () =>{
+    setMenuOpen(false);
+  };
+
   return (
     <header>
       <nav className='navBar'>
-        <ul className='ulList'>
+
+      <div className="hamburger" onClick={oppenMenu}>
+      <i class="fa-solid fa-bars"></i>
+      </div>
+
+        <ul className={`ulList ${menuOpen ? "open" : ""}`}>
           <li className='logo'>
             <i className="fa-regular fa-bookmark"></i>
             BIBLIOTECA INFINITA
           </li>
 
-          <li><Link to="/">HOME</Link></li>
+          <li><Link to="/" onClick={closeMenu}>HOME</Link></li>
 
-          {user && <li><Link to="/biblioteca">BIBLIOTECA</Link></li>}
+          {user && <li><Link to="/biblioteca" onClick={closeMenu} >BIBLIOTECA</Link></li>}
 
-          {!user && <li><Link to="/login">LOGIN</Link></li>}
-          {!user && <li><Link to="/signup">REGISTRO</Link></li>}
+          {!user && <li><Link to="/login" onClick={closeMenu} >LOGIN</Link></li>}
+          {!user && <li><Link to="/signup" onClick={closeMenu} >REGISTRO</Link></li>}
 
           {user && (
             <li>

@@ -1,20 +1,91 @@
 
 /* TÍTULO - H1 - BIBLIOTECA INFINITA */
+
+.divHome{
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; */
+   /* Alinea TODOS los elementos de la Home */
+  margin-top: 0.5rem;
+}
 .h1{
-  font-size: 60px;
+  font-size: 36px;
+  color: black;
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   letter-spacing: 5px;
-  text-align: center;
-  margin-top: 50px;  /* border: 1px solid black; */
+  text-align: end;
+  margin-right: 0.7rem;
 }
 
 .h2{
-  font-size: 26px;
+  font-size: 15px;
   font-family: "Cormorant Garamond", system-ui;
   font-weight: bold;
-  letter-spacing: 4px;
+  text-align: end;
+  margin-right: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+/* TABLETS */
+@media (min-width: 768px){
+
+.divHome{
+  margin-top: 14.3rem;
+}
+
+.h1{
+  font-size: 50px;
+  max-width: 35rem; /*Para FORZAR el salto de linea*/
+  /* border: 1px solid black; */
+  text-align: end;
+  margin-left: 7rem;
+}
+
+.h2{
+  font-size: 18px;
+  font-family: "Cormorant Garamond", system-ui;
+  font-weight: bold;
+  text-align: end;
+  /* border: 1px solid black; */
+  letter-spacing: 2px;
+  margin-right: 6rem;
+  margin-top: 0.3rem;
+}
+
+}
+
+/* ESCRITORIO */
+@media (min-width: 1025px){
+
+  .divHome{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-top: 5.5rem;
+
+  /* border: 1px solid black; */
+
+}
+
+.h1{
+  font-size: 50px;
+  width: 100%;
+  max-width: 100%;
   text-align: center;
-  margin-top: 20px;
-  /* border: 1px solid black */
+  margin-left: 0rem;
+
+
+  /* border: 1px solid black; */
+}
+.h2{
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+
+
+  /* border: 1px solid black; */
+}
+
+
 }

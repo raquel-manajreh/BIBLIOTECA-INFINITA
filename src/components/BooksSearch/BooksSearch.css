@@ -1,13 +1,55 @@
 /* CSS para modificar el COMPONENTE BooksSeach */
 
-
-
 /* import { motion } from "motion/react" */
+
+
+.searchingComponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 6.5rem;
+}
+
+.searchInput{
+    padding: 8px;
+    background-color: rgba(245, 245, 245, 0.934);
+    width: 16rem;
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.837);
+    transition: all 0.3s ease;
+}
+.searchInput:focus {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.searchButton{
+    padding: 0.8rem;
+    background-color: rgba(245, 245, 245, 0.934);
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    border-radius: 20%;
+    margin-top: 3rem;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.837);
+    transition: all 0.3s ease;
+}
+
+
 
 /* TABLETS */
 @media (min-width: 768px){
 
+.searchingComponent{
+   margin-top: 8.5rem;
+}
 
+.searchInput{
+    padding: 15px;
+    width: 20rem;
+}
 
 }
 
@@ -23,16 +65,21 @@
 
 
     .searchInput{
-        padding: 5px;
+        padding: 6px;
         background-color: rgba(245, 245, 245, 0.796);
-        width: 300px;
-        border: 1px solid rgba(0, 0, 0, 0.74);
+        width: 360px;
+        border: 1px solid rgba(85, 85, 85, 0.74);
         border-radius: 10px;
-        /* border-style: none; */
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.837);
+        transition: all 0.3s ease;
+        outline: none;
     }
     .searchInput:hover{
-        background-color: rgba(235, 235, 235, 0.796);
+        background-color: rgba(249, 249, 249, 0.796);
         border: 1px solid rgba(0, 0, 0, 0.74);
+    }
+    .searchInput:focus {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.897);
     }
 
     .searchButton{

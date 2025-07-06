@@ -1,40 +1,135 @@
-/* CSS DEL  NAVBAR*/
-*{
-    margin: 0;
-    padding: 0;
+/* === CSS DEL NAVBAR - MOBILE & TABLET FIRST === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.navBar{
-    /* background-color: rgba(235, 234, 234, 0.825); */
-    border-radius: 8px;
+.navBar {
+  height: 36px;
+  padding: 0 1rem;
+  top: 0.30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.hamburger {
+  display: block;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  margin-left: 0.6rem;
+}
+
+.ulList {
+  list-style: none;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(245, 245, 245, 0.789);
+  width: 100%;
+  padding: 0;
+  border-radius: 0 0 8px 8px;
+  z-index: 5;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+}
+
+/* Mostrar el menú cuando se clicke */
+.ulList.open {
+  max-height: 60rem; /* o la altura que necesites */
+  padding: 1rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.logo {
+  display: none;
+  font-family: "Cormorant Garamond", system-ui;
+  font-weight: bold;
+  background-color: rgba(210, 200, 177, 0.677);
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Ítems de lista */
+li {
+  font-weight: bold;
+  padding: 0.5rem 0;
+  margin-left: 0.6rem;
+}
+
+/* Icono */
+.fa-bookmark {
+  margin-right: 6px;
+}
+
+@media (min-width: 760px) {
+
+  .hamburger {
+    font-size: 30px;
+  }
+
+  .navBar {
+    justify-content: center;
+    position: relative;
+    top: 1.5rem;
+  }
+
+  .ulList {
+    text-align: center;
+    gap: 1.6rem;
+    background-color: rgba(245, 233, 215, 0.714);
+    top: 2rem;
+    margin-top: 1rem;
+  }
+}
+
+/* === ESCRITORIO (a partir de 1024px) === */
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
+  }
+
+  .navBar {
     height: 60px;
-}
+  }
 
-.ulList{
-    list-style: none;
-    display: flex;
-    /* border: 1px solid black; */
-}
+  .ulList {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    position: static;
+    background-color: transparent;
+    width: auto;
+    padding: 0;
+    max-height: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
 
+  .logo {
+    margin: 0 20rem 0 0rem;
+    display: block;
+  }
 
-.logo{
-    padding: 12px;
-    margin: 20px 400px 0px 100px;
-    border-radius: 15px;
-    background-color: rgba(210, 200, 177, 0.677);
-    font-family: "Cormorant Garamond", system-ui;
-    font-weight: bold;
-    font-style: normal;
-}
+  /* li {
+  } */
 
-
-li{
-    margin: 20px 0px 0px 80px;
-    padding: 12px;
-    font-weight: bold;
-    /* border: 1px solid black; */
-}
-
-.fa-bookmark{
-    margin-right: 6px;
 }
