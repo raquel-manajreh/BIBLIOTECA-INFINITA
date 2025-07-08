@@ -2,12 +2,13 @@ import NavBar from "./NavBar/NavBar";
 import Home from "../Pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
 import Login from "../Pages/Login/Login";
-import SignUp from "../Pages/SignUp/SignUp";
+// import SignUp from "../Pages/SignUp/SignUp";
 import Biblioteca from "../Pages/Biblioteca/Biblioteca";
 import AuthRoute from "./AuthRoutes/AuthRoute";
 
 
 import '../css/App.css';
+import BookLogin from "./BookLogin/BookLogin";
 
 
 function App() {
@@ -18,8 +19,8 @@ function App() {
 
       <Routes >
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route  path="/login" element={<BookLogin />}/>
+        <Route  path="/signup" element={<BookLogin />}/>
         <Route path="/biblioteca" element={<AuthRoute><Biblioteca /></AuthRoute>} />
       </Routes>
     </div>
