@@ -4,29 +4,45 @@
 }
 
 .book {
-  width: 600px;
-  height: 400px;
-  display: flex;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   background: white;
+  box-shadow: none;
+  height: auto;
+  position: relative;
 }
 
+/* Página izquierda y derecha (desktop) */
 .page {
-  width: 50%;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   box-sizing: border-box;
+  padding: 20px;
+  display: none; /* ocultamos por defecto */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 50%;
 }
 
 .login-extra, .register-extra {
   font-size: 1.5rem;
   font-weight: 600;
   color: #333;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* Móvil: solo se muestra el contenedor mobile-only */
+.mobile-only {
+  display: block;
+  padding: 20px;
+}
+
+.mobile-only .login-extra,
+.mobile-only .register-extra {
+  margin-bottom: 1rem;
 }
 
 .toggle-button {
@@ -36,4 +52,33 @@
   border: none;
   cursor: pointer;
   text-decoration: underline;
+}
+
+/* Desktop (tablet en adelante) */
+@media (min-width: 768px) {
+  .book {
+    display: flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  /* Mostrar páginas izquierda y derecha */
+  .page {
+    display: flex;
+  }
+
+  /* Ocultar el contenedor mobile-only */
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Clases helper para ocultar texto extra en desktop si no queremos que se repita */
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
 }

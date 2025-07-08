@@ -14,18 +14,36 @@ function BookLogin() {
   return (
     <div className="book-container">
       <div className="book">
-        <div className="page left">
+        {/* Página izquierda (desktop): formulario login o texto registro */}
+        <div className={`page left`}>
           {isLogin ? (
             <Login togglePage={togglePage} />
           ) : (
-            <div className="register-extra">¡Únete a nosotros!</div>
+            <div className="register-extra desktop-only">¡Únete a nosotros!</div>
           )}
         </div>
-        <div className="page right">
+
+        {/* Página derecha (desktop): texto login o formulario signup */}
+        <div className={`page right`}>
           {isLogin ? (
-            <div className="login-extra">Bienvenido de nuevo</div>
+            <div className="login-extra desktop-only">Bienvenido de nuevo</div>
           ) : (
             <SignUp togglePage={togglePage} />
+          )}
+        </div>
+
+        {/* Texto + formulario juntos SOLO para móvil */}
+        <div className="mobile-only">
+          {isLogin ? (
+            <>
+              <div className="login-extra">Bienvenido de nuevo</div>
+              <Login togglePage={togglePage} />
+            </>
+          ) : (
+            <>
+              <div className="register-extra">¡Únete a nosotros!</div>
+              <SignUp togglePage={togglePage} />
+            </>
           )}
         </div>
       </div>
