@@ -30,7 +30,10 @@
 }
 
 .toggle-button {
-  margin-top: 20px;
-  padding: 10px 20px;
+  margin-top: 1rem;
+  background: transparent;
+  color: #444;
+  border: none;
   cursor: pointer;
+  text-decoration: underline;
 }
