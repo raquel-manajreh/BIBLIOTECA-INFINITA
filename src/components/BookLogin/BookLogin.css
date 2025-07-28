@@ -1,70 +1,175 @@
 .book-container {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 14dvh;
 }
 
 .book {
-  width: 100%;
-  max-width: 600px;
+  width: 80%;
+  max-width: 40rem;
   margin: 0 auto;
-  background: white;
-  box-shadow: none;
+  background: #fdfaf6; /* Color suave estilo papel */
   height: auto;
   position: relative;
+  border-radius: 3%;
+  overflow: hidden;
+}
+
+/* Simula el pliegue del libro */
+.book::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  background: linear-gradient(to bottom, #ccc, #999);
+  z-index: 1;
 }
 
 /* Página izquierda y derecha (desktop) */
 .page {
+  display: none;
   box-sizing: border-box;
-  padding: 20px;
-  display: none; /* ocultamos por defecto */
+  padding: 10px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 400px;
+  height: 30px;
   width: 50%;
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+}
+
+.page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem; /* Espaciado vertical entre los campos */
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.page form label {
+  align-self: flex-start;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.page form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .login-extra, .register-extra {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
   color: #333;
-  margin-bottom: 1rem;
   width: 100%;
+  margin-bottom: -50px;
   text-align: center;
 }
 
 /* Móvil: solo se muestra el contenedor mobile-only */
 .mobile-only {
-  display: block;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  height: 30rem;
 }
 
 .mobile-only .login-extra,
 .mobile-only .register-extra {
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
 }
 
+.mobile-only form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.mobile-only form label {
+  font-weight: 500;
+  color: #333;
+}
+
+.mobile-only form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.mobile-only form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .toggle-button {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   background: transparent;
   color: #444;
   border: none;
   cursor: pointer;
   text-decoration: underline;
+  align-self: center;
+}
+
+.toggle-login{
+  white-space: nowrap;
+  background-color: #a98d5e; /* azul agradable */
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  align-self: center;
 }
 
 /* Desktop (tablet en adelante) */
 @media (min-width: 768px) {
   .book {
     display: flex;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
 
   /* Mostrar páginas izquierda y derecha */
   .page {
     display: flex;
+    height: 26rem;
+    padding: 50px;
+
   }
+  .page.left {
+  border-right: 1px solid #eee;
+  box-shadow: inset -10px 0 6px -5px rgba(0, 0, 0, 0.1);
+  background-color: #fffefc;
+}
+
+.page.right {
+  border-left: 1px solid #eee;
+  box-shadow: inset 5px 0 8px -5px rgba(0, 0, 0, 0.1);
+  background-color: #fffefc;
+}
+
+.login-extra, .register-extra {
+  margin-bottom: 1.5rem;
+}
 
   /* Ocultar el contenedor mobile-only */
   .mobile-only {
@@ -81,4 +186,5 @@
   .desktop-only {
     display: block;
   }
+  
 }

@@ -66,7 +66,7 @@ function SignUp({ togglePage }) {
         />
       </label>
 
-      <button type="submit">¡Regístrate!</button>
+      <button className="toggle-login" type="submit">¡Regístrate!</button>
 
       <button type="button" onClick={togglePage} className="toggle-button">
         ¿Ya tienes cuenta? Iniciar sesión

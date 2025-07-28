@@ -61,7 +61,7 @@ function Login({ togglePage }) {
         />
       </label>
 
-      <button type="submit">Iniciar Sesión</button>
+      <button className="toggle-login" type="submit">Iniciar Sesión</button>
 
       <button type="button" onClick={togglePage} className="toggle-button">
         ¿No tienes cuenta? Crear una
