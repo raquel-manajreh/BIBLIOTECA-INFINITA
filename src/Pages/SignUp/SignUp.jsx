@@ -44,7 +44,7 @@ function SignUp({ togglePage }) {
 
   return (
     <form onSubmit={handleRegister} className="signup-form">
-      <label htmlFor="email">
+      <label className="text-register" htmlFor="email">
         Email
         <input
           id="email"
@@ -55,7 +55,7 @@ function SignUp({ togglePage }) {
         />
       </label>
 
-      <label htmlFor="password">
+      <label className="text-register" htmlFor="password">
         Contraseña
         <input
           id="password"

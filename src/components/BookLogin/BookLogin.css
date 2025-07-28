@@ -7,7 +7,7 @@
   width: 80%;
   max-width: 40rem;
   margin: 0 auto;
-  background: #fdfaf6; /* Color suave estilo papel */
+  background: #fffefc; /* Color suave estilo papel */
   height: auto;
   position: relative;
   border-radius: 3%;
@@ -66,12 +66,18 @@
 }
 
 .login-extra, .register-extra {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 600;
   color: #333;
   width: 100%;
   margin-bottom: -50px;
   text-align: center;
+}
+.text-register {
+  font-size: 18px;
+  /* font-family:monospace; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 /* Móvil: solo se muestra el contenedor mobile-only */
@@ -177,7 +183,7 @@
   }
 }
 
-/* Clases helper para ocultar texto extra en desktop si no queremos que se repita */
+/* Clases helper para ocultar texto extra en desktop que no quiero que se repita */
 .desktop-only {
   display: none;
 }
@@ -186,5 +192,4 @@
   .desktop-only {
     display: block;
   }
-  
 }

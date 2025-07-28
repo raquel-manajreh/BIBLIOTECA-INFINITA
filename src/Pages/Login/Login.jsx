@@ -39,27 +39,26 @@ function Login({ togglePage }) {
 
   return (
     <form onSubmit={handleLogin} className="login-form">
-      <label htmlFor="email">
-        Email
-        <input
-          id="email"
-          type="email"
-          value={email}
-          placeholder="email..."
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-
-      <label htmlFor="password">
-        Contraseña
-        <input
-          id="password"
-          type="password"
-          value={password}
-          placeholder="password..."
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
+        <label className="text-register" htmlFor="email">
+          Email
+          <input
+            id="email"
+            type="email"
+            value={email}
+            placeholder="email..."
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label className="text-register" htmlFor="password">
+          Contraseña
+          <input
+            id="password"
+            type="password"
+            value={password}
+            placeholder="password..."
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
 
       <button className="toggle-login" type="submit">Iniciar Sesión</button>
 
