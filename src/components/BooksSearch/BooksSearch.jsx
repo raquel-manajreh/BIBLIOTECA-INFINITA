@@ -74,46 +74,39 @@ const BooksSearch = () => {
       {error && <p className="text-red-500 mt-2">{error}</p>}
 
 
-      <div>
-        {books.length > 0 && (
-          <ul>
-            {books.map((book, index) => (
+      <div className="books-container">
+  {books.length > 0 && (
+    <ul className="books-grid">
+      {books.map((book, index) => (
+        <li className="book-card" key={index}>
+          {book.volumeInfo.imageLinks?.thumbnail && (
+            <img
+              className="book-cover"
+              src={book.volumeInfo.imageLinks.thumbnail}
+              alt={`Portada de ${book.volumeInfo.title}`}
+            />
+          )}
+          <div className="book-info">
+            <h4 className="book-title">{book.volumeInfo.title}</h4>
+            <p className="book-authors">
+              {book.volumeInfo.authors?.join(', ') || 'Autor desconocido'}
+            </p>
+            <p className="book-categories">
+              {book.volumeInfo.categories?.join(', ') || 'Sin categoría'}
+            </p>
 
-              <li key={index}>
-
-                
-                <h4>{book.volumeInfo.title}</h4>  {/* PARA VER TITULO */}
-                
-                {/* IMAGEN (si está disponible) */}
-                {book.volumeInfo.imageLinks?.thumbnail && (   
-                  <img
-                    src={book.volumeInfo.imageLinks.thumbnail}
-                    alt={`Portada de ${book.volumeInfo.title}`}
-                  />
-                )}
-                
-                <p>{book.volumeInfo.authors?.join(', ')}</p>  {/* AUTORES */}
-
-                <p>{book.volumeInfo.categories?.join(', ')}</p>  {/* CATEGORIA */}
-
-                {/* <p>{book.id}</p>  */}
-                 {/* ID */}
-
-
-                <div className='button-group'>
-                  <button onClick={() => handleSave(book, "favoritos")}>Favoritos</button>
-                  <button onClick={() => handleSave(book, "leidos")}>Leídos</button>
-                  <button onClick={() => handleSave(book, "enCurso")}>En curso</button>
-                  <button onClick={() => handleSave(book, "proximaHistoria")}>Próxima Historia</button>
-                </div>
-                
-              </li>
-            ))}
-          </ul>
-
-        )}
-
-      </div>
+            <div className="button-group">
+              <button onClick={() => handleSave(book, "favoritos")}>Favoritos</button>
+              <button onClick={() => handleSave(book, "leidos")}>Leídos</button>
+              <button onClick={() => handleSave(book, "enCurso")}>En curso</button>
+              <button onClick={() => handleSave(book, "proximaHistoria")}>Próxima Historia</button>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
     </div>
   );
 };

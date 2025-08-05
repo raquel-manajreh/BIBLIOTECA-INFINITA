@@ -1,4 +1,3 @@
-/* CSS para modificar el COMPONENTE BooksSeach */
 
 /* import { motion } from "motion/react" */
 
@@ -36,6 +35,7 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.837);
     transition: all 0.3s ease;
 }
+
 
 
 
