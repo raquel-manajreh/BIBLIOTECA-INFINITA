@@ -36,8 +36,14 @@
     transition: all 0.3s ease;
 }
 
+.book-authors{
+    font-size: 14px;
+    margin: 0.5rem 0;
+}
 
-
+.book-categories{
+    font-weight: lighter;
+}
 
 /* TABLETS */
 @media (min-width: 768px){

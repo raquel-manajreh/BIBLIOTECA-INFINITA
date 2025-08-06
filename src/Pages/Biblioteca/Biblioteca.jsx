@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
-import {
-  getBooksFromLibrary,
-  updateBookState,
-  deleteBookFromLibrary
-} from '../../components/AuthRoutes/firebaseBooks';
+import { getBooksFromLibrary, updateBookState, deleteBookFromLibrary } from '../../components/AuthRoutes/firebaseBooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faBookOpen,faClock, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import './Biblioteca.css';
 
@@ -41,11 +39,12 @@ const Biblioteca = () => {
   const estados = ['favoritos', 'leidos', 'enCurso', 'proximaHistoria'];
 
   const etiquetas = {
-    favoritos: 'Favoritos',
-    leidos: 'Leídos',
+    favoritos: <FontAwesomeIcon icon={faHeart}  className="heart" title="Favoritos" />,
+    leidos: 'leídos',
     enCurso: 'En curso',
     proximaHistoria: 'Próxima Historia'
   };
+
 
   const groupedBooks = estados.reduce((acc, estado) => {
     acc[estado] = books.filter(book => book.estado === estado);

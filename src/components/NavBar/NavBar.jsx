@@ -32,7 +32,7 @@ function NavBar () {
       <nav className='navBar'>
 
       <div className="hamburger" onClick={oppenMenu}>
-      <i class="fa-solid fa-bars"></i>
+      <i className="fa-solid fa-bars"></i>
       </div>
 
         <ul className={`ulList ${menuOpen ? "open" : ""}`}>
