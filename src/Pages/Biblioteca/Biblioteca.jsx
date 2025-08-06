@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { getBooksFromLibrary, updateBookState, deleteBookFromLibrary } from '../../components/AuthRoutes/firebaseBooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faBookOpen,faClock, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 import './Biblioteca.css';
 

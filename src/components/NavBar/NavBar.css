@@ -53,6 +53,7 @@ a {
   transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
 }
 
+
 /* Mostrar el menú cuando se clicke */
 .ulList.open {
   max-height: 60rem; /* o la altura que necesites */
@@ -78,9 +79,26 @@ li {
   margin-left: 0.6rem;
 }
 
+li:hover{
+  transform: scale(1.06);
+  transition: transform 0.3s ease;
+}
+
 /* Icono */
 .fa-bookmark {
   margin-right: 6px;
+}
+
+.logoutBtn {
+  border: none;
+  background: none;
+  padding: 0.2rem 0.4rem;
+  text-align: start;
+  cursor: pointer;
+}
+.logoutBtn:hover{
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 
 @media (min-width: 760px) {

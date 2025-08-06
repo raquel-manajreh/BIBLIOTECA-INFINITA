@@ -2,8 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../AuthRoutes/firebaseConfig";
-import "./NavBar.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
+import "./NavBar.css";
+
 
 function NavBar () {
   const { user } = useAuth();
@@ -50,7 +53,7 @@ function NavBar () {
 
           {user && (
             <li>
-              <button onClick={handleLogout} className="logoutBtn">CERRAR SESIÓN</button>
+            <button onClick={handleLogout} className="logoutBtn"> CERRAR SESIÓN <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" /></button>
             </li>
           )}
         </ul>

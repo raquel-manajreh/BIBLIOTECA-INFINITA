@@ -1,3 +1,5 @@
+
+
 .kanban-container {
   display: flex;
   flex-direction: column;
@@ -31,6 +33,7 @@
 }
 
 .book-card {
+  list-style: none;
   min-height: 20rem;
   max-width: 16rem;
   position: relative;

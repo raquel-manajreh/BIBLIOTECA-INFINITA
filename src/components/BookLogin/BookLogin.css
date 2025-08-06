@@ -7,11 +7,15 @@
   width: 80%;
   max-width: 40rem;
   margin: 0 auto;
-  background: #fffefc; /* Color suave estilo papel */
+  /* background: #fffefc; */
+  background: url('/public/page-image2.jpg');
+  background-size: cover;
   height: auto;
   position: relative;
   border-radius: 3%;
   overflow: hidden;
+  filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.5));
+
 }
 
 /* Simula el pliegue del libro */
@@ -21,8 +25,8 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  background: linear-gradient(to bottom, #ccc, #999);
   z-index: 1;
+  background-color: none;
 }
 
 /* Página izquierda y derecha (desktop) */
@@ -61,6 +65,7 @@
 .page form input {
   width: 100%;
   padding: 0.5rem;
+  margin-top: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -75,7 +80,7 @@
   text-align: center;
 }
 .text-register {
-  font-size: 18px;
+  font-size: 17px;
   /* font-family:monospace; */
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -113,6 +118,8 @@
 .mobile-only form input {
   width: 100%;
   padding: 0.5rem;
+    margin-top: 8px;
+
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -156,9 +163,12 @@
 
   /* Mostrar páginas izquierda y derecha */
   .page {
+    margin-top: 0;
     display: flex;
     height: 26rem;
     padding: 50px;
+    background: url('/public/page-image2.jpg');
+    background-size: cover;
 
   }
   .page.left {
