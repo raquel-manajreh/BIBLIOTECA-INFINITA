@@ -5,7 +5,7 @@
     flex-direction: row;
     align-items: center;
     color: rgb(72, 72, 72);
-    background: linear-gradient(to top, rgba(155, 155, 155, 0.87) 80%, rgba(155, 155, 155, 0)); /* Aquí va el degradado */
+    background: linear-gradient(to top, rgba(225, 225, 225, 0.753) 80%, rgba(155, 155, 155, 0)); /* Aquí va el degradado */
     padding: 0.4rem;
     gap: 1rem;
     width: 100%;
@@ -43,7 +43,7 @@ a{
     .footer{
         color: rgb(42, 42, 42);
         font-size: 12px;
-        gap: 18rem;
+        gap: 4rem;
     }
     .info{
         gap: 2rem;
