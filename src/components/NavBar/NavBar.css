@@ -41,8 +41,7 @@ a {
   position: absolute;
   top: 100%;
   left: 0;
-  /* background: linear-gradient(to top, rgba(231, 231, 231, 0.866)60%, rgba(250, 250, 250, 0)); */
-  background: linear-gradient(to top, rgba(231, 231, 231, 0.95) 60%, rgba(250, 250, 250, 1));
+  background: linear-gradient(to top, rgba(231, 231, 231, 0.866)60%, rgba(250, 250, 250, 0));
   width: 100%;
   padding: 0;
   border-radius: 0 0 8px 8px;
@@ -62,6 +61,8 @@ a {
   padding: 1rem;
   opacity: 1;
   pointer-events: auto;
+  background: linear-gradient(to top, rgba(231, 231, 231, 0.866)60%, rgba(250, 250, 250, 0));
+
 }
 
 .logo {
