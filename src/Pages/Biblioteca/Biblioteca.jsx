@@ -39,12 +39,11 @@ const Biblioteca = () => {
   const estados = ['favoritos', 'leidos', 'enCurso', 'proximaHistoria'];
 
   const etiquetas = {
-    favoritos: <FontAwesomeIcon icon={faHeart}  className="heart" title="Favoritos" />,
+    favoritos: <FontAwesomeIcon icon={faHeart} className="heart" title="Favoritos" />,
     leidos: 'leídos',
     enCurso: 'En curso',
     proximaHistoria: 'Próxima Historia'
   };
-
 
   const groupedBooks = estados.reduce((acc, estado) => {
     acc[estado] = books.filter(book => book.estado === estado);
@@ -98,38 +97,41 @@ const Biblioteca = () => {
         <div key={estado} className="kanban-column">
           <h3 className="column-title">{etiquetas[estado]}</h3>
           <div className="book-grid">
-            {groupedBooks[estado].map(book => (
-              <div
-                key={book.id}
-                className="book-card"
-                onClick={() => setActiveBookId(book.id === activeBookId ? null : book.id)}
-              >
-                <img src={book.image} alt={book.title} />
+            {groupedBooks[estado] && groupedBooks[estado].length > 0 ? (
+              groupedBooks[estado].map(book => (
+                <div
+                  key={book.id}
+                  className="book-card"
+                  onClick={() => setActiveBookId(book.id === activeBookId ? null : book.id)}
+                >
+                  <img src={book.image} alt={book.title} />
 
-                {/* Mostrar sólo si el libro NO está activo */}
-                {activeBookId !== book.id && (
-                  <>
-                    <h4>{book.title}</h4>
-                    <p>{book.authors?.join(', ')}</p>
-                    {/* <p><strong>Estado:</strong> {etiquetas[book.estado]}</p> */}
-                  </>
-                )}
+                  {/* Mostrar sólo si el libro NO está activo */}
+                  {activeBookId !== book.id && (
+                    <>
+                      <h4>{book.title}</h4>
+                      <p>{book.authors?.join(', ')}</p>
+                    </>
+                  )}
 
-                {/* Mostrar botones solo si el libro está activo */}
-                {activeBookId === book.id && (
-                  <div className="button-group" onClick={e => e.stopPropagation()}>
-                    {estados.map(e => (
-                      <button key={e} onClick={() => handleChangeEstado(book.id, e)}>
-                        {etiquetas[e]}
+                  {/* Mostrar botones solo si el libro está activo */}
+                  {activeBookId === book.id && (
+                    <div className="button-group" onClick={e => e.stopPropagation()}>
+                      {estados.map(e => (
+                        <button key={e} onClick={() => handleChangeEstado(book.id, e)}>
+                          {etiquetas[e]}
+                        </button>
+                      ))}
+                      <button onClick={() => handleDeleteBook(book.id)} style={{ color: 'red' }}>
+                        Eliminar
                       </button>
-                    ))}
-                    <button onClick={() => handleDeleteBook(book.id)} style={{ color: 'red' }}>
-                      Eliminar
-                    </button>
-                  </div>
-                )}
-              </div>
-            ))}
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : (
+              <p className='noBooks'>No hay libros</p>
+            )}
           </div>
         </div>
       ))}

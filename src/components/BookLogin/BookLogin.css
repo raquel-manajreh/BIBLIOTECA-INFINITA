@@ -7,7 +7,6 @@
   width: 80%;
   max-width: 40rem;
   margin: 0 auto;
-  /* background: #fffefc; */
   background: url('/public/page-image2.jpg');
   background-size: cover;
   height: auto;
@@ -167,18 +166,18 @@
     display: flex;
     height: 26rem;
     padding: 50px;
-    background: url('/public/page-image2.jpg');
+    background: url('/public/page6.jpg');
     background-size: cover;
 
   }
   .page.left {
-  border-right: 1px solid #eee;
+  border-right: 2px solid #b3a98f;
   box-shadow: inset -10px 0 6px -5px rgba(0, 0, 0, 0.1);
   background-color: #fffefc;
 }
 
 .page.right {
-  border-left: 1px solid #eee;
+  border-left: 1px solid #b3a98f;
   box-shadow: inset 5px 0 8px -5px rgba(0, 0, 0, 0.1);
   background-color: #fffefc;
 }
@@ -195,10 +194,10 @@
 
 /* Clases helper para ocultar texto extra en desktop que no quiero que se repita */
 .desktop-only {
-  display: none;
+  display: block;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .desktop-only {
     display: block;
   }
