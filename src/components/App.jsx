@@ -9,20 +9,25 @@ import AuthRoute from "./AuthRoutes/AuthRoute";
 
 import '../css/App.css';
 import BookLogin from "./BookLogin/BookLogin";
+import Footer from "./Footer/Footer";
 
 
 function App() {
 
   return (
-    <div>
+    <div className="app-container">
       <NavBar /> 
 
-      <Routes >
-        <Route path="/" element={<Home />} />
-        <Route  path="/login" element={<BookLogin />}/>
-        <Route  path="/signup" element={<BookLogin />}/>
-        <Route path="/biblioteca" element={<AuthRoute><Biblioteca /></AuthRoute>} />
-      </Routes>
+      <main className="content">
+        <Routes >
+          <Route path="/" element={<Home />} />
+          <Route  path="/login" element={<BookLogin />}/>
+          <Route  path="/signup" element={<BookLogin />}/>
+          <Route path="/biblioteca" element={<AuthRoute><Biblioteca /></AuthRoute>} />
+        </Routes>
+      </main>
+
+      <Footer />
     </div>
   );
 }

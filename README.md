@@ -30,10 +30,13 @@ Esta es una aplicación web dedidaca a la comunidad lectora, donde los usuarios 
 Lista de tecnologías utilizadas:
 
 - React
+- JavaScript
 - React Router Dom
 - Firebase
 - Google Books API
 - CSS
+- Framer Motion
+
 
 ## Instalación
 
@@ -44,4 +47,5 @@ git clone https://github.com/tu-usuario/tu-proyecto.git
 cd tu-proyecto
 npm install
 npm start
+npm run dev
 
