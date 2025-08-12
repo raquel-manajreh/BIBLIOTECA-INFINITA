@@ -48,7 +48,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem; /* Espaciado vertical entre los campos */
+  gap: 1.2rem;
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
@@ -80,11 +80,9 @@
 }
 .text-register {
   font-size: 17px;
-  /* font-family:monospace; */
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/* Móvil: solo se muestra el contenedor mobile-only */
 .mobile-only {
   display: flex;
   flex-direction: column;
@@ -141,7 +139,7 @@
 
 .toggle-login{
   white-space: nowrap;
-  background-color: #a98d5e; /* azul agradable */
+  background-color: #a98d5e;
   color: white;
   border: none;
   padding: 0.5rem;
@@ -166,18 +164,18 @@
     display: flex;
     height: 26rem;
     padding: 50px;
-    background: url('/public/page6.jpg');
+    background: url('/public/page-image2.jpg');
     background-size: cover;
 
   }
   .page.left {
-  border-right: 2px solid #b3a98f;
+  border-right: 2px solid #bebebd;
   box-shadow: inset -10px 0 6px -5px rgba(0, 0, 0, 0.1);
   background-color: #fffefc;
 }
 
 .page.right {
-  border-left: 1px solid #b3a98f;
+  border-left: 1px solid #b0afad;
   box-shadow: inset 5px 0 8px -5px rgba(0, 0, 0, 0.1);
   background-color: #fffefc;
 }
@@ -186,13 +184,11 @@
   margin-bottom: 1.5rem;
 }
 
-  /* Ocultar el contenedor mobile-only */
   .mobile-only {
     display: none;
   }
 }
 
-/* Clases helper para ocultar texto extra en desktop que no quiero que se repita */
 .desktop-only {
   display: block;
 }

@@ -44,17 +44,19 @@ a{
     .footer{
         color: rgb(42, 42, 42);
         font-size: 12px;
-        gap: 4rem;
     }
     .info{
-        gap: 2rem;
+        gap: 1rem;
+    }
+    p{
+        width: 350px;
     }
 }
 
 @media (min-width: 1044px){
     .footer{
         font-size: 13px;
-        gap: 26rem;
+        gap: 17rem;
         padding: 0.6rem;
     }  
 }
